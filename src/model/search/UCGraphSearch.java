@@ -76,8 +76,8 @@ public class UCGraphSearch implements SearchStrategy {
 
 		@Override
 		public boolean add(Node node) {
-			map.put(node.state(), node);	//O(log(n))
-			return queue.add(node);			//O(1)
+			map.put(node.state(), node);	//O(1)
+			return queue.add(node);			//O(log(n))
 		}
 
 		@Override
@@ -88,12 +88,12 @@ public class UCGraphSearch implements SearchStrategy {
 		}
 
 		public boolean remove(Node node) {
-			map.remove(node.state());
-			return queue.remove(node);
+			map.remove(node.state());		//O(1)
+			return queue.remove(node);		//O(log(n))
 		}
 
 		public Node get(State state) {
-			return map.get(state);
+			return map.get(state);			//O(1)
 		}
 	}
 
