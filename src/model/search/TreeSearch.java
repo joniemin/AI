@@ -5,6 +5,8 @@ import java.util.Queue;
 
 import model.Action;
 import model.Problem;
+import model.search.result.Failure;
+import model.search.result.SearchResult;
 
 /**
  * Template class for TreeSearches
@@ -15,7 +17,7 @@ public abstract class TreeSearch implements SearchStrategy {
 	private Queue<Node> frontier;
 
 	@Override
-	public List<Action> search(Problem problem) {
+	public SearchResult search(Problem problem) {
 		Node node = new Node(problem.initialState());
 		frontier.add(node);
 		while (!frontier.isEmpty()) {
@@ -25,7 +27,7 @@ public abstract class TreeSearch implements SearchStrategy {
 			}
 			expand(node, problem);
 		}
-		return null; // failure
+		return new Failure();
 	}
 
 	protected void expand(Node node, Problem problem) {

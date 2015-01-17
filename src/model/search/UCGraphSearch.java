@@ -12,6 +12,8 @@ import java.util.Set;
 import model.Action;
 import model.Problem;
 import model.State;
+import model.search.result.Failure;
+import model.search.result.SearchResult;
 
 public class UCGraphSearch implements SearchStrategy {
 
@@ -23,7 +25,7 @@ public class UCGraphSearch implements SearchStrategy {
 	}
 
 	@Override
-	public List<Action> search(Problem problem) {
+	public SearchResult search(Problem problem) {
 		Node node = new Node(problem.initialState());
 		frontier.add(node);
 		explored = new HashSet<Node>();
@@ -47,7 +49,7 @@ public class UCGraphSearch implements SearchStrategy {
 				}
 			}
 		}
-		return null; // failure
+		return new Failure(); // failure
 	}
 
 	private class UCQueue extends PriorityQueue<Node> {

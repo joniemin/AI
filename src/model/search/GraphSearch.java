@@ -7,6 +7,8 @@ import java.util.Set;
 
 import model.Action;
 import model.Problem;
+import model.search.result.Failure;
+import model.search.result.SearchResult;
 
 
 /**
@@ -19,7 +21,7 @@ public abstract class GraphSearch implements SearchStrategy {
 	protected Set<Node> explored;
 
 	@Override
-	public List<Action> search(Problem problem) {
+	public SearchResult search(Problem problem) {
 		Node node = new Node(problem.initialState());
 		frontier.add(node);
 		explored = new HashSet<Node>();
@@ -32,7 +34,7 @@ public abstract class GraphSearch implements SearchStrategy {
 			explored.add(node);
 			expand(node, problem);
 		}
-		return null; // failure
+		return new Failure();
 	}
 
 	protected void expand(Node node, Problem problem) {

@@ -6,6 +6,7 @@ import java.util.List;
 import model.Action;
 import model.Problem;
 import model.State;
+import model.search.result.Solution;
 
 public class Node{
 
@@ -36,12 +37,12 @@ public class Node{
 		return pathCost;
 	}
 
-	public List<Action> solution() {
+	public Solution solution() {
 		if (parent == null) {
-			return new ArrayList<Action>();
+			return new Solution(new ArrayList<Action>());
 		}
-		List<Action> solution = parent.solution();
-		solution.add(action);
+		Solution solution = parent.solution();
+		solution.actions().add(action);
 		return solution;
 	}
 

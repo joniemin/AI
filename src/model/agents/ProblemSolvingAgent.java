@@ -25,7 +25,7 @@ public abstract class ProblemSolvingAgent {
 		if (seq.isEmpty()) {
 			goal = formulateGoal(state);
 			problem = formulateProblem(state, goal);
-			seq = searchStrategy.search(problem);
+			seq = searchStrategy.search(problem).actions();
 		}
 		return seq == null || seq.isEmpty() ? null : seq.remove(0);
 	}

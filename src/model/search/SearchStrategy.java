@@ -3,9 +3,10 @@ package model.search;
 import java.util.List;
 
 import model.*;
+import model.search.result.SearchResult;
 
 public interface SearchStrategy {
 	
-	public List<Action> search(Problem problem);
+	public SearchResult search(Problem problem);
  
 }

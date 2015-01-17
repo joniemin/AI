@@ -8,6 +8,8 @@ import java.util.Set;
 
 import model.Action;
 import model.Problem;
+import model.search.result.Failure;
+import model.search.result.SearchResult;
 
 public class BFGraphSearch implements SearchStrategy {
 
@@ -15,7 +17,7 @@ public class BFGraphSearch implements SearchStrategy {
 	private Set<Node> explored;
 
 	@Override
-	public List<Action> search(Problem problem) {
+	public SearchResult search(Problem problem) {
 		Node node = new Node(problem.initialState());
 		if (problem.isGoal(node.state())) {
 			return node.solution();
@@ -38,6 +40,6 @@ public class BFGraphSearch implements SearchStrategy {
 				}
 			}
 		}
-		return null; // failure
+		return new Failure(); 
 	}
 }
