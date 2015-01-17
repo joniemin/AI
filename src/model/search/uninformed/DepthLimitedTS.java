@@ -1,18 +1,24 @@
-package model.search;
+package model.search.uninformed;
 
 import java.util.List;
 
 import model.Action;
 import model.Problem;
+import model.search.Node;
+import model.search.SearchStrategy;
 import model.search.result.Cutoff;
 import model.search.result.Failure;
 import model.search.result.SearchResult;
 
-public class DLTreeSearch implements SearchStrategy {
+/**
+ *	Depth-limited tree search 
+ *
+ */
+public class DepthLimitedTS implements SearchStrategy {
 
 	private int limit;
 
-	public DLTreeSearch(int limit) {
+	public DepthLimitedTS(int limit) {
 		this.limit = limit;
 	}
 

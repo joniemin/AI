@@ -1,4 +1,4 @@
-package model.search;
+package model.search.uninformed;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -8,10 +8,16 @@ import java.util.Set;
 
 import model.Action;
 import model.Problem;
+import model.search.Node;
+import model.search.SearchStrategy;
 import model.search.result.Failure;
 import model.search.result.SearchResult;
 
-public class BFGraphSearch implements SearchStrategy {
+/**
+ *	Breadth-first graph search 
+ *
+ */
+public class BreadthFirstGS implements SearchStrategy {
 
 	private Queue<Node> frontier;
 	private Set<Node> explored;

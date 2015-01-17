@@ -17,7 +17,7 @@ import model.search.result.SearchResult;
  */
 public abstract class GraphSearch implements SearchStrategy {
 
-	protected Queue<Node> frontier;
+	protected Frontier frontier;
 	protected Set<Node> explored;
 
 	@Override
@@ -37,6 +37,11 @@ public abstract class GraphSearch implements SearchStrategy {
 		return new Failure();
 	}
 
+	/**
+	 * Default implementation for node expansion
+	 * @param node
+	 * @param problem
+	 */
 	protected void expand(Node node, Problem problem) {
 		for (Action action : problem.actions(node.state())) {
 			Node child = node.child(problem, action);
