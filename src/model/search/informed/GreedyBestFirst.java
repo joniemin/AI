@@ -1,15 +1,16 @@
 package model.search.informed;
 
 import model.search.Node;
+import model.search.SearchStrategy;
 
 /**
  * Greedy best-first graph search
  *
  */
-public class GreedyBestFirstGS extends BestFirstGS {
+public abstract class GreedyBestFirst extends BestFirst {
 	
-	public GreedyBestFirstGS(final Heuristic heuristic) {
-		super(new Evaluator(){
+	public SearchStrategy graphSearch(final Heuristic heuristic) {
+		return super.graphSearch(new Evaluator(){
 			@Override
 			public int eval(Node node) {
 				return heuristic.value(node);

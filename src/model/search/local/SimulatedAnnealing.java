@@ -35,7 +35,7 @@ public class SimulatedAnnealing implements SearchStrategy {
 			if (temperature == 0) {
 				return current.solution();
 			}
-			Node next = successor(problem, current);
+			Node next = expand(current, problem);
 			int delta = evaluator.eval(next) - evaluator.eval(current);
 			if (delta > 0 || new Random().nextDouble() < Math.exp(delta / temperature)) {
 				current = next;
@@ -43,7 +43,7 @@ public class SimulatedAnnealing implements SearchStrategy {
 		}
 	}
 
-	private Node successor(Problem problem, Node current) {
+	private Node expand(Node current, Problem problem) {
 		List<Action> actions = problem.actions(current.state());
 		Action action = actions.remove(new Random().nextInt(actions.size()));
 		return current.child(problem, action);

@@ -1,11 +1,12 @@
 package model.search.informed;
 
 import model.search.Node;
+import model.search.SearchStrategy;
 
-public class AStarGS extends BestFirstGS{
+public class AStar extends BestFirst{
 
-	public AStarGS(final Heuristic heuristic) {
-		super(new Evaluator(){
+	public SearchStrategy graphSearch(final Heuristic heuristic) {
+		return super.graphSearch(new Evaluator(){
 			@Override
 			public int eval(Node node) {
 				return heuristic.value(node) + node.pathCost();

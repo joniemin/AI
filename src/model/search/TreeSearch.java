@@ -30,6 +30,11 @@ public abstract class TreeSearch implements SearchStrategy {
 		return new Failure();
 	}
 
+	/**
+	 * Default implementation for node expansion
+	 * @param node
+	 * @param problem
+	 */
 	protected void expand(Node node, Problem problem) {
 		for (Action action : problem.actions(node.state())) {
 			frontier.add(node.child(problem, action));
