@@ -1,7 +1,6 @@
 package model.search;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import model.Action;
 import model.Problem;
@@ -50,5 +49,10 @@ public class Node{
 		return new Node(problem.result(state, action), this, action, pathCost + problem.stepCost(state, action),
 				depth + 1);
 	}
+
+	public boolean pathContains(Node node) {
+		return (this.equals(node)) ? true : (parent == null) ? false : parent.pathContains(node);
+	}
+
 	
 }

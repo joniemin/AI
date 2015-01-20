@@ -10,6 +10,8 @@ public abstract class Problem {
 
 	public abstract State result(State state, Action action);
 
+	public abstract List<State> results(State state, Action action);
+
 	public abstract boolean isGoal(State state);
 
 	public abstract int stepCost(State state, Action action);
@@ -17,6 +19,9 @@ public abstract class Problem {
 	public State initialState() {
 		return initialState;
 	}
+	
+	public abstract List<State> initialStates();
+
 
 
 
